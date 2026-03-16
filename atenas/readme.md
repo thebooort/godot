@@ -12,7 +12,28 @@ Basado en:
 
 * Comprender cómo hacer la segmentación de una imagen en capas
 * Cómo cambiar propiedades de otros nodos mediante el [arbol de nodos](https://github.com/mgea/godot/wiki/Arbol-de-nodos) 
-* Aplicar métodos de Parallax Scrolling (primera aproximación) 
+* Aplicar métodos de Parallax Scrolling (primera aproximación)
+
+### Texto fancy
+Para texto enriquecido:
+```
+[pulse]pulso [/pulse]
+[wave]aaa[/wave]
+[tornado]aaa[/tornado]
+[shake]aaa[/shake]
+[fade length=8]aaaaaaaaa[/fade]
+[rainbow]aaAAAAAa[/rainbow]
+[color=red]rojo[/color]
+[color=#00ff00]verde[/color]
+[bgcolor=yellow]fondo[/bgcolor]
+[outline_size=2][outline_color=black]texto[/outline_color][/outline_size]
+[b]negrita[/b]
+[i]cursiva[/i]
+[u]subrayado[/u]
+[s]tachado[/s]
+[img]res://icon.svg[/img]
+[shake][b][color=red]CRITICAL HIT[/color][/b][/shake]
+```
 ### Cambio de escena tras varios segundos: 
 ```
 func _ready():
