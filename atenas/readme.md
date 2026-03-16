@@ -13,7 +13,12 @@ Basado en:
 * Comprender cómo hacer la segmentación de una imagen en capas
 * Cómo cambiar propiedades de otros nodos mediante el [arbol de nodos](https://github.com/mgea/godot/wiki/Arbol-de-nodos) 
 * Aplicar métodos de Parallax Scrolling (primera aproximación) 
-
+### Cambio de escena tras varios segundos: 
+```
+func _ready():
+    await get_tree().create_timer(5.0).timeout
+    get_tree().change_scene_to_file("res://escena2.tscn")
+```
 ### Segmentar imagen en capas 
 
 * Utilizar herramientas como photoshop para segmentar imagen en capas para componer en Godot
