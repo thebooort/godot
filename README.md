@@ -11,34 +11,6 @@ Contenidos:
 
 <br>
 
-# Introducción a la Multimedia interactiva 
-
-<img src="https://cdn-icons-png.flaticon.com/512/11998/11998671.png" height="150">
-
-La creación de contenido multimedia con ordenador ha ido evolucionando a lo largo del tiempo. [Timeline](https://mgea.github.io/PeriodismoMultimedia/content/resources/timeline.html)
-
-- Adobe/Macromedia [Flash](https://www.hackaboss.com/blog/tecnologia-adobe-flash)  fue la gran apuesta multimedia en internet en los años 90, pero su tecnología se quedó obsoleta con las mejoras de HTML5 y sus problemas de seguridad hacia 2010. [Historia](https://www.youtube.com/watch?v=aaOihL8mvDM)
- 
-     <a href="https://www.youtube.com/watch?v=aaOihL8mvDM"> <img src="https://i.ytimg.com/vi/aaOihL8mvDM/hq720.jpg" height="150">  </a> 
-
-
-- Multimedia **Authoring Tools** (https://atomisystems.com/elearning/multimedia-authoring-tools-definition-features-and-examples/)
-  - [Evolución](https://mgea.github.io/content/resources/autoring_tools-flashcards.html) 
-- **HTML5** y librerías de animación en Javascript - https://www.digitalogy.co/blog/top-javascript-animation-libraries/
-  - Editores basados en filosofía Flash 
-    - Hippani Animator - https://www.hippani.com/
-    - Wickeditor - https://www.wickeditor.com/
-- **Game engine**:
-  Los motores de videojuegos es una estupenda alternativa para la creación multimedia, ya qe son capaces de manejar escenas con multiples medios de manera muy eficiente, y resuelve de forma 
-adecuada animaciones (cinemática), los player (movimiento de personajes), colisiones, manipulación (drag & drop), dinámica y control de física etc. Entre las distintas plataformas existentes, godot es una muy buena opción para la creación multimedia por:
-  * fácil instalación (un solo fichero que se descarga y funciona sin mayores problemas de instalación)
-  * open source & free, desarrollado por una comunidad en constante evolución
-  * lenguaje de scrip gdscript sencillo (basado en python) 
-
-<br> 
-<br>
-
-
 # Ejercicios sobre Godot organizada en sesiones
 
 La mayoría de los ejercicios está publicados para jugar online en **cuenta de itch.io**: https://cmiugr.itch.io/ 
@@ -49,7 +21,6 @@ La mayoría de los ejercicios está publicados para jugar online en **cuenta de 
 [Godot engine](https://godotengine.org/)  para Creación Multimedia Interactiva 
 
 <img src="https://kidscancode.org/godot_recipes/3.x/img/godot3_logo.png" width="250px" />
-
 
 
 * [0 qué es Godot](https://github.com/mgea/godot/wiki/Qu%C3%A9-es-Godot)
@@ -64,9 +35,9 @@ La mayoría de los ejercicios está publicados para jugar online en **cuenta de 
 ### Ejemplos
 
 
- * [Hello World](hello_world) Animación básica de un sprite con  GDScript por Consola  
+ * 1.1 [Animación de sprite por codigo](hello_world) Animación básica de un sprite con  GDScript por Consola  
   
- * [Bansky](bansky) Pasar de una escena a otra con botones
+ * 1.2 [Pasar de una escena a otra con botones](bansky) Pasar de una escena a otra con botones
 
  
 <br>
@@ -84,8 +55,8 @@ Conceptos:
 
 ### Ejemplos
 
-* [Atenas](atenas) - composición imágenes por capas
-* [BBAAteaser](bbaateaser) - animacion por linea de tiempo con jerarquías animadas y reutilización de escenas
+* 2.1 [Imagenes por capas y parallax](atenas) - composición imágenes por capas
+* 2.2 [Animación por linea de tiempo y uso de animaciones](bbaateaser) - animacion por linea de tiempo con jerarquías animadas y reutilización de escenas
 
 
 <br>
