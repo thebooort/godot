@@ -16,7 +16,7 @@ Contenidos:
 La mayoría de los ejercicios está publicados para jugar online en **cuenta de itch.io**: https://cmiugr.itch.io/ 
 <br>
 
-## Sesión 1: Conceptos básicos con Godot (game engine) 
+## Semana 1: Conceptos básicos con Godot  
 
 [Godot engine](https://godotengine.org/)  para Creación Multimedia Interactiva 
 
@@ -35,40 +35,40 @@ La mayoría de los ejercicios está publicados para jugar online en **cuenta de 
 ### Ejemplos
 
 
- * 1.1 [Animación de sprite por codigo](hello_world) Animación básica de un sprite con  GDScript por Consola  
+ * (Día 1) 1.1 [Animación de sprite por codigo](hello_world) Animación básica de un sprite con  GDScript por Consola  
   
- * 1.2 [Pasar de una escena a otra con botones](bansky) Pasar de una escena a otra con botones
+ * (Día 2) 1.2 [Pasar de una escena a otra con botones](bansky) Pasar de una escena a otra con botones (Nodos: Button)
 
  
 <br>
 <br>
 
-## Sesión 2 Elementos multimedia (imágenes, texto y animación)  
+## Semana 2 Elementos multimedia (imágenes, texto y animación)  
 
 Conceptos: 
 
-* 4 Imágenes y propiedades: ajustes, transparencias, modelo de color
-* 5 Texto y sus propiedades
-* 6 Animación 2D con AnimationPlayer
+* 4 Imágenes y propiedades: ajustes, transparencias, modelo de color (Nodos: Sprite2D y jerarquías)
+* 5 Texto y sus propiedades (Nodos: Label y RichTextLabel)
+* 6 Animación 2D con AnimationPlayer (Nodos: AnimationPlayer)
 
 
 
 ### Ejemplos
 
-* 2.1 [Imagenes por capas y parallax](atenas) - composición imágenes por capas
-* 2.2 [Animación por linea de tiempo y uso de animaciones](bbaateaser) - animacion por linea de tiempo con jerarquías animadas y reutilización de escenas
+* 2.1 [Imágenes por capas, texto fancy, pasar de escena tras X segundos y parallax](atenas) - composición imágenes por capas
+* 2.2 [Animación por línea de tiempo y uso de animaciones](bbaateaser) - animación por línea de tiempo con jerarquías animadas y reutilización de escenas
 
 
 <br>
 <br>
 
 
-## Sesión 3: GUI: Interfaz gráfico de usuario con Godot
+## Semana 3: GUI: Interfaz gráfico de usuario con Godot
 
 Conceptos:
 
-* Diseñar y personalizar el IU
-* 
+* Diseñar y personalizar el IU (Nodos: Button, Texture Button, Canvas)
+* Creacion de Temas (Themes)
 
 
 ### Ejemplos GUI y HUD 
@@ -80,7 +80,7 @@ Conceptos:
 <br>
 <br>
 
-## Sesión 4 Multimedia avanzada con Godot: audio & character animation 
+## Semanan 4 Multimedia avanzada con Godot: audio & character animation 
 
 Uso de audio y canales:
 
