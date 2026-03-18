@@ -11,7 +11,7 @@ Contenidos:
 
 <br>
 
-# Ejercicios sobre Godot organizada en sesiones
+# Ejercicios sobre Godot organizada en semanas
 
 La mayoría de los ejercicios está publicados para jugar online en **cuenta de itch.io**: https://cmiugr.itch.io/ 
 <br>
@@ -19,9 +19,6 @@ La mayoría de los ejercicios está publicados para jugar online en **cuenta de 
 ## Semana 1: Conceptos básicos con Godot  
 
 [Godot engine](https://godotengine.org/)  para Creación Multimedia Interactiva 
-
-<img src="https://kidscancode.org/godot_recipes/3.x/img/godot3_logo.png" width="250px" />
-
 
 * [0 qué es Godot](https://github.com/mgea/godot/wiki/Qu%C3%A9-es-Godot)
 
