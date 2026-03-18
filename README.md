@@ -1,5 +1,7 @@
 # Godot: Multimedia interactiva
 
+-> [aqui un pequeño resumen de todo lo que llevamos hasta la fecha](https://github.com/thebooort/godot/blob/main/resumen_so_far.md) 
+
 Apuntes y ejercicios para para crear contenido multimedia interactiva usando Godot Engine. 
 
 ![godot](https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQWprtkvYqYvWB8iCVZ2N5bT6AcjAzcDGgpAg&s) 
