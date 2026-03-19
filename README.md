@@ -72,14 +72,14 @@ Conceptos:
 
 ### Ejemplos GUI y HUD 
 
-* [GUI](GUI) - Controles y look&feel
+* [GUI, controles personalizados, importacion](GUI) - Controles y look&feel
 
-* [HUD](HUD) - Paneles de control con elementos del UI (CanvasLayer), se muestran encima como capas y se pueden mostrar/ocultar. 
+* [HUD](HUD) - Paneles de control con elementos del UI (CanvasLayer), se muestran encima como capas y se pueden mostrar/ocultar (menus pop up, barra de vida, mapas, etc)
 
 <br>
 <br>
 
-## Semanan 4 Multimedia avanzada con Godot: audio & character animation 
+## Semana 4 Multimedia avanzada con Godot: audio & character animation 
 
 Uso de audio y canales:
 
