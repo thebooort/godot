@@ -17,8 +17,12 @@ El resultado será un fichero del tipo: {Nombre_de_la_escena}.tscn que aparecer�
 6. Nodos que hemos visto hasta ahora:
  - Sprite2D (Meter imagenes)
  - Label (Meter texto)
- - RichTextLabel (Meter texto, con posibilidad de ser animado)
- - Button (Insertar botones)
+ - RichTextLabel (Meter texto, con posibilidad de ser animado, enlaces, incluso imagenes dentro)
+ - Button (Insertar botones, si queremos personalizarlo podemos usar el theme overrides e irnos a style)
+ - TextureButton (una manera rapida de hacer botones con textura algo mas limitado que usar unboton normal)
  - Parallax2D (Insertar efecto parallax, uno por cada capa que queramos animar)
- - AnimationPlayer (insertar animaciones)
-7.
+ - AnimationPlayer (insertar animaciones, recordad activar el boton de que se reproduzcan automaticamente y elegir el tipo de bucle: sin bucle, adelante y atras, en bucle)
+7. Crear temas: Botón derecho en recursos, crear nuevo recurso, nuevo tema.
+   - Administrar para añadirle aquellos nodos que queráis personalizar
+   - personalizarlos!
+   - Para usarla simplemente iros a theme cuando añadais alguno de esos nodos y cargad el tema guardado. 
