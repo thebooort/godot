@@ -72,9 +72,9 @@ Conceptos:
 
 ### Ejemplos GUI y HUD 
 
-* [GUI, controles personalizados, importacion](GUI) - Controles y look&feel
+* 3.1 [GUI, controles personalizados, importacion](GUI) - Controles y look&feel
 
-* [HUD](HUD) - Paneles de control con elementos del UI (CanvasLayer), se muestran encima como capas y se pueden mostrar/ocultar (menus pop up, barra de vida, mapas, etc)
+* 3.2 [HUD](HUD) - Paneles de control con elementos del UI (CanvasLayer), se muestran encima como capas y se pueden mostrar/ocultar (menus pop up, barra de vida, mapas, etc)
 
 <br>
 <br>
