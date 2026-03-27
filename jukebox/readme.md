@@ -1,5 +1,5 @@
 
-## Jukebox, Audio stream 20025
+## Sonidos, Audio stream 20025
 
 Stream Audio 
 Info: https://docs.godotengine.org/es/4.x/tutorials/audio/index.html
@@ -15,16 +15,50 @@ https://docs.godotengine.org/es/4.x/tutorials/audio/audio_buses.html
   
 
 ### AudioStreamPlayer
+#### AudioStream
+Un AudioStream es simplemente el recurso de sonido.
 
-* Utilizar herramientas como photoshop para segmentar imagen en capas para componer en Godot
-* Aplicar movimiento a los nodos
-* Para establecer propiedades de otros nodos: se debe usar **get_node()** https://kidscancode.org/godot_recipes/3.x/basics/getting_nodes/
+Es el archivo:
+
+.wav
+.ogg
+.mp3
+
+En Godot, cuando lo importas, pasa a ser un AudioStream.
+
+Qué hace (y qué NO hace)
+- Contiene el audio
+- No se reproduce solo
+- No tiene volumen ni posición
+
+#### AudioStreamPlayer — el reproductor
+
+Este es el nodo que:
+
+carga un AudioStream
+lo reproduce
 
 
 
-  
 ![ASP](https://docs.godotengine.org/es/4.x/_images/audio_buses3.webp)
 
+Para reproducirla en la escena actual: 
+```
+func _ready() -> void:
+	$MusicaAmbiente.play()
+```
+
+#### Audio Buses — el mezclador de sonido
+
+Esto es lo importante de verdad en juegos.
+
+Los buses son como un mezclador de audio profesional.
+
+Permiten:
+
+- controlar volumen por grupo
+- aplicar efectos (reverb, EQ, etc.)
+- organizar audio
 
 ### Activar mediante botones 
 
@@ -69,4 +103,14 @@ func _on_button_pressed() -> void:
     $bt_music.play()
 ```
 
+# control por slider
+- Crea el nodo slider
+- conecta la señal value_changed con algun script ya sea en el nodo o en la escena (donde se esté reproduciendo el audio)
+- En ese script añade: 
+
+```
+func _on_h_slider_value_changed(value: float) -> void:
+	value = max(value, 0.001)
+	AudioServer.set_bus_volume_db(1, linear_to_db(value))
+```
 
