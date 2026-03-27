@@ -38,10 +38,11 @@ El resultado será un fichero del tipo: {Nombre_de_la_escena}.tscn que aparecer�
  
   
 8.Animaciones con animation player.
-  Recordad la opción de cómo reproducir el bucle y que se inicie al cargar escena
-  Crear el nodo animation player
-  Nueva animacion y elegir qué vamos a animar y que propiedades de esa cosa
-  defini estado inicial -> crear fotograma -> desplazar linea del tiempo -> definir estado final -> crear fotograma
+  - Recordad la opción de cómo reproducir el bucle y que se inicie al cargar escena
+  - Crear el nodo animation player
+  - Nueva animacion y elegir qué vamos a animar y que propiedades de esa cosa
+  - defini estado inicial -> crear fotograma -> desplazar linea del tiempo -> definir estado final -> crear fotograma
+  
 9. Botones:
-Crear boton -> añadirle script -> seleccionar nodo, señales ir a la de is_pressed(), conectarla con el script -> actualizar el script. 
-CUIDADO con los nombres de las funciones y ponerlo donde toca!
+- Crear boton -> añadirle script -> seleccionar nodo, señales ir a la de is_pressed(), conectarla con el script -> actualizar el script. 
+- CUIDADO con los nombres de las funciones y ponerlo donde toca!
