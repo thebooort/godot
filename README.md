@@ -85,9 +85,11 @@ Uso de audio y canales:
 
 * [Jukebox](jukebox)
 
-Animación con sprite (usando botones, no movimiento con teclas)
+Animación con sprites:
+Basico: animar un sprite 2d con inputs (teclado) para moverlo por la pantalla, solo imagen.
+* [AnimatedSprite2D](GUI-MoveSprite-Inputs) - Animación de un personaje con AnimatedSprite2D y botones para cambiar animación (idle, walk, jump)
 
-
+Avanzado: animar un personaje con AnimatedSprite2D y botones para cambiar animación (idle, walk, jump) y movimiento por la pantalla con inputs (teclado) Nuevo nodo CharacterBody2D para gestionar colisiones y movimiento con físicas.
 * [Sprite2Dbasic](animatedSprite_basic)
 
 <br>
