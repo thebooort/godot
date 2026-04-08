@@ -91,7 +91,7 @@ Basico: animar un sprite 2d con inputs (teclado) para moverlo por la pantalla, s
 
 Avanzado: animar un personaje con AnimatedSprite2D y botones para cambiar animación (idle, walk, jump) y movimiento por la pantalla con inputs (teclado) Nuevo nodo CharacterBody2D para gestionar colisiones y movimiento con físicas.
 * [Sprite2Dbasic](animatedSprite_basic)
-
+*[Sprite2D Avanzado](moveanimatedSprite)
 <br>
 <br>
 
