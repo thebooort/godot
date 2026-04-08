@@ -60,21 +60,21 @@ Si queremos además animar al personaje. debemos poner en play su animación en 
 extends CharacterBody2D
 
 
-const speed = 300.0
+const speed = 50.0
 
 
 func get_input():
-	var input_direction = Input.get_vector("ui_left", "ui_right", "ui_up", "ui_down")
+	var input_direction = Input.get_vector("left", "right", "up", "down")
 	velocity = input_direction*speed
-	if Input.is_action_just_pressed("ui_right"):
-		$AnimatedSprite2D.play("move_dcha")
-	if Input.is_action_just_pressed("ui_left"):
-		$AnimatedSprite2D.play("move_izda")
-	if Input.is_action_just_pressed("ui_up"):
-		$AnimatedSprite2D.play("move_up")
-	if Input.is_action_just_pressed("ui_down"):
-		$AnimatedSprite2D.play("move_down")
-	if Input.is_action_just_released("soltar_tecla"):
+	if Input.is_action_just_pressed("right"):
+		$AnimatedSprite2D.play("right")
+	if Input.is_action_just_pressed("left"):
+		$AnimatedSprite2D.play("left")
+	if Input.is_action_just_pressed("up"):
+		$AnimatedSprite2D.play("up")
+	if Input.is_action_just_pressed("down"):
+		$AnimatedSprite2D.play("down")
+	if input_direction==Vector2.ZERO:
 		$AnimatedSprite2D.play("default")
 
 
@@ -87,7 +87,8 @@ func _physics_process(delta: float) -> void:
 		print("he chocado con ", colision.get_collider().name)
 	else:
 		print("")
-	# move_and_slide()
+	#move_and_slide()
+
 
 ```
 
