@@ -104,8 +104,60 @@ func _on_next_pressed() -> void:
 <br>
 <br>
 
+```
+extends Node2D
 
 
+var image
+
+var indice = 0    # el indice almacena el lugar actual (imagen) de la lista 
+var total = 3
+
+var textlist = [
+	"[b]Edificio 1[/b] 
+	Descripción del primero",
+	"[b]Edificio 2[/b]
+	Descripción del segundo",
+	"[b]Edificio 3[/b]
+	 Descripción del tercero"
+]
+
+
+var imglist = [
+		preload("res://edificios3(1).png"),
+	preload("res://edificios5.png"),
+	preload("res://edificios6.png")
+		]	
+
+
+# Called when the node enters the scene tree for the first time.
+func _ready() -> void:
+	pass # Replace with function body.
+
+
+# Called every frame. 'delta' is the elapsed time since the previous frame.
+func _process(delta: float) -> void:
+	pass
+
+
+func _on_button_2_pressed() -> void:
+	indice = indice +1 
+	if (indice>=total):
+		indice=0                   # para que sea cíclico, cuando llega a última vuelve a primera
+	$nodo_para_edificio.texture = imglist[indice] 
+	$RichTextLabel.clear()
+	$RichTextLabel.text=textlist[indice]
+	$AnimationPlayer.play("aparecer")
+
+
+func _on_button_pressed() -> void:
+	indice = indice -1 
+	if (indice<0):
+		indice=total-1             # para que sea cíclico, vuelve a última imagen
+	$nodo_para_edificio.texture = imglist[indice]
+	$RichTextLabel.text(textlist[indice]) 
+	$AnimationPlayer.play("aparecer")
+```	 
 
 
 
