@@ -33,9 +33,9 @@ $videostreamplayer.play()
 
 
 
-## GALERIA IMAGENES 
+## GALERIA IMAGENES Y TEXTO
 
-(actualizado 7 Mayo 2025)
+(actualizado 9 Abril 2026)
 
 
 #### Cargar una imagen dinámicamente  (alternativa 1: mejor para exportación)
