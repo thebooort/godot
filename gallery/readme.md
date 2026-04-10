@@ -15,7 +15,7 @@ https://docs.godotengine.org/es/4.x/classes/class_videostreamplayer.html#class-v
 
 * Deben ser en formato OGV (ver https://docs.godotengine.org/es/4.x/tutorials/animation/playing_videos.html)
 
-* Se pueden convertir con ffmpeg
+* Se pueden convertir con ffmpeg (guia de instalacion https://phoenixnap.com/kb/ffmpeg-windows)
 
 ejemplo: ffmpeg -i input.mp4 -q:v 6 -q:a 6 output.ogv
 
