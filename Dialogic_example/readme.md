@@ -61,6 +61,43 @@ Se pueden usar varias que viene prediseñadas o hacer una propia
 
 ![characters_folder](estilos_dialogic.png)
 
+### Interaccion
+
+StaticBody2D
+-  sprite 2D
+-  Collisionshape2D
+-  Area2D
+  - collisionShape2D
+
+Llamamos a la señal adecuada:
+```
+@export var timeline_path := "res://timeline1.dtl"
+func _on_area_2d_body_entered(body: Node2D) -> void:
+	var encuentros = Dialogic.VAR.get_variable("encuentros_con_jon")
+	print(encuentros)
+		
+	if body.name == "frisk":
+		Dialogic.start(timeline_path)
+```
+
+Para activarlo con un boton
+```
+@export var timeline_path := "res://timeline1.dtl"
+var jugador_dentro := false
+var hablando := false
+func _on_area_2d_body_entered(body: Node2D) -> void:
+	if body.name == "frisk":
+		jugador_dentro = true
+func _on_area_2d_body_exited(body: Node2D) -> void:
+	if body.name == "frisk":
+		jugador_dentro = false
+func _process(_delta: float) -> void:
+	if jugador_dentro and not hablando and Input.is_action_just_pressed("interact"):
+		hablando = true
+		var encuentros = Dialogic.VAR.get_variable("encuentros_con_jon")
+		print(encuentros)
+		Dialogic.start(timeline_path)
+```
 
 
 
