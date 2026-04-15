@@ -98,7 +98,11 @@ func _process(_delta: float) -> void:
 		Dialogic.start(timeline_path)
 ```
 
-
-
+### abrir glosario
+```
+func _process(_delta):
+	if Input.is_action_just_pressed("glossary"):
+		Dialogic.open_glossary()
+```
 
 
