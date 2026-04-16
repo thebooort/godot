@@ -81,18 +81,18 @@ Conceptos:
 
 ## Semana 4 Multimedia avanzada con Godot: audio & character animation 
 
-Uso de audio y canales:
+### Uso de audio y canales:
 
 * [Jukebox](jukebox)
 
-Animación con sprites:
+### Animación con sprites e Interaccion:
 
-Basico: animar un sprite 2d con inputs (teclado) para moverlo por la pantalla, solo imagen.
-* [AnimatedSprite2D](GUI-MoveSprite-Inputs) - Animación de un personaje con AnimatedSprite2D y botones para cambiar animación (idle, walk, jump)
+- Basico: animar un sprite 2d con inputs (teclado) para moverlo por la pantallan.
+* [Movimiento Sprite2D](GUI-MoveSprite-Inputs) - Animación de un personaje con AnimatedSprite2D y botones para cambiar animación (idle, walk, jump)
 
-Avanzado: animar un personaje con AnimatedSprite2D y botones para cambiar animación (idle, walk, jump) y movimiento por la pantalla con inputs (teclado) Nuevo nodo CharacterBody2D para gestionar colisiones y movimiento con físicas.
-* [Sprite2Dbasic](animatedSprite_basic)
-*[Sprite2D Avanzado](moveanimatedSprite)
+- Avanzado: animar un personaje con AnimatedSprite2D y movimiento por la pantalla con inputs (teclado).  Nuevo nodo CharacterBody2D para gestionar colisiones y movimiento con físicas.
+* [Cómo animar personajes](animatedSprite_basic)
+* [Como mover personajes con animaciones](moveanimatedSprite)
 
 <br>
 <br>
@@ -100,9 +100,9 @@ Avanzado: animar un personaje con AnimatedSprite2D y botones para cambiar animac
 
 ## Sesión 5. Incrustación de videos y creación de galería de imágenes en Godot 
 
-En esta parte nos vamos a centrar en cómo manejar un stream de video y cómo crear una galería sencilla de imágenes. 
+En esta parte nos vamos a centrar en cómo gestionar un stream de video y en cómo crear una galería sencilla de imágenes. 
 
-* [Galería y añadir videos](gallery) - Incluye manejo de video, listas y galería de imágenes.
+* [Galería y añadir videos](gallery) - Incluye gestión de videos, listas y galería de imágenes.
 
 <br>
 
@@ -116,7 +116,7 @@ En esta semana nos hemos dedicado a configurar el plugin de Sistema de Diálogo 
 <br>
 <br>
 
-## Sesión 8: Exportar  
+## Sesión 7: Exportar  
 
 Cómo exportar: 
 
