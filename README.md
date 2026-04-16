@@ -86,43 +86,30 @@ Uso de audio y canales:
 * [Jukebox](jukebox)
 
 Animación con sprites:
+
 Basico: animar un sprite 2d con inputs (teclado) para moverlo por la pantalla, solo imagen.
 * [AnimatedSprite2D](GUI-MoveSprite-Inputs) - Animación de un personaje con AnimatedSprite2D y botones para cambiar animación (idle, walk, jump)
 
 Avanzado: animar un personaje con AnimatedSprite2D y botones para cambiar animación (idle, walk, jump) y movimiento por la pantalla con inputs (teclado) Nuevo nodo CharacterBody2D para gestionar colisiones y movimiento con físicas.
 * [Sprite2Dbasic](animatedSprite_basic)
 *[Sprite2D Avanzado](moveanimatedSprite)
+
 <br>
 <br>
 
 
 ## Sesión 5. Incrustación de videos y creación de galería de imágenes en Godot 
 
-En esta parte nos vamos a centrar en cómo manejar stream de video y cómo crear una galería sencilla de imágenes. 
+En esta parte nos vamos a centrar en cómo manejar un stream de video y cómo crear una galería sencilla de imágenes. 
 
-* [Galería](gallery) - Incluye manejo de video, listas y galería de imágenes.
-
-
-<br>
-<br>
-
-## Sesión 6: Sprites en Godot:  mover personje 2D (inputs y colisiones) 
-
-En esta parte nos vamos a centrar en cómo manejar personajes (y colisiones)
-
-* [Mover sprite2D](moveSprite) - Incluye gestión de inputs (teclado) y movimiento pesonaje 2D (X.Y) con colisiones (personaje sin animación propia: es un Sprite2D)
-
-* [Mover animatedSprite2D](moveanimatedSprite) - Movimiento de un player con animación propia (**AnimatedSprite2D**) 
-
-
+* [Galería y añadir videos](gallery) - Incluye manejo de video, listas y galería de imágenes.
 
 <br>
-<br>
 
 
-## Sesión 7: Sistema de Diálogos (plugin dialogic)
+## Sesión 6: Sistema de Diálogos (plugin dialogic)
 
-En esta semana nos hemos dedicado a configurar el plugin de Sistema de Dialogo Dialogic y vér como usar para crear narrativas de personajes y cómo activar con colisiones. 
+En esta semana nos hemos dedicado a configurar el plugin de Sistema de Diálogo Dialogic y ver cómo usar para crear narrativas de personajes y cómo activar con colisiones. 
 
 * [Ejemplo de Dialogic](https://github.com/thebooort/godot/blob/main/Dialogic_example/readme.md)
 
