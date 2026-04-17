@@ -117,15 +117,38 @@ Para tener definiciones de todos los términos, se activa pasando el ratón por 
 ### Texto en burbuja
 El personaje al que queremos adjuntárselo necesita una modificación en el texto: 
 ```
+extends StaticBody2D
+
+
+# Called when the node enters the scene tree for the first time.
+func _ready() -> void:
+	pass # Replace with function body.
+	
+	
 
 @export var timeline_path := "res://timeline1.dtl"
+var jugador_dentro := false
+var hablando := false
 func _on_area_2d_body_shape_entered(body_rid: RID, body: Node2D, body_shape_index: int, local_shape_index: int) -> void:
-	var encuentros = Dialogic.VAR.get_variable("num_encuentros_con_jon")
-	print(encuentros)
-	print(body.name)
 	if body.name == "frisk":
+		jugador_dentro = true
+
+
+func _on_area_2d_body_shape_exited(body_rid: RID, body: Node2D, body_shape_index: int, local_shape_index: int) -> void:
+	if body.name == "frisk":
+		jugador_dentro = false
+		
+func _process(_delta: float) -> void:
+	if jugador_dentro and not hablando and Input.is_action_just_pressed("interact"):
+		hablando = true
+		var encuentros = Dialogic.VAR.get_variable("num_encuentros_con_jon")
+		
+		print(encuentros)
 		var layout = Dialogic.start(timeline_path)
 		layout.register_character("res://jon.dch",$".")
+		await Dialogic.timeline_ended
+		Dialogic.VAR.set_variable("num_encuentros_con_jon",1)
+		hablando = false
 ```
 
 Ademas debemos modificar el estilo, haciendo que la default layout base sea en realidad una bubble base (por lo menos en Dialogic 16)
