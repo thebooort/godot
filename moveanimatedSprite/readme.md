@@ -107,39 +107,39 @@ Primero, en Project Settings > Input Map, crea una acción llamada por ejemplo "
 
 El script quehabría que añadir es: 
 ```
-extends CharacterBody2D
-
-const SPEED = 300.0
-const JUMP_VELOCITY = -450.0
-
-var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
-
-func get_input():
-	var direction = Input.get_axis("left", "right")
-	velocity.x = direction * SPEED
-
-	if direction > 0:
-		$AnimatedSprite2D.play("right")
-	elif direction < 0:
-		$AnimatedSprite2D.play("left")
-	else:
-		$AnimatedSprite2D.play("default")
 
 func _physics_process(delta: float) -> void:
-	# gravedad
+	# Gravedad
 	if not is_on_floor():
-		velocity.y += gravity * delta
+		velocity += get_gravity() * delta
 
-	# salto
-	if Input.is_action_just_pressed("jump") and is_on_floor():
+	# Dirección
+	var direction := Input.get_axis("ui_left", "ui_right")
+
+	# Salto
+	if Input.is_action_just_pressed("ui_accept") and is_on_floor():
 		velocity.y = JUMP_VELOCITY
+		$AnimatedSprite2D.play("saltar")
 
-	get_input()
+	# Movimiento horizontal
+	if direction != 0:
+		velocity.x = direction * SPEED
+	else:
+		velocity.x = move_toward(velocity.x, 0, SPEED)
+
 	move_and_slide()
 
-	for i in range(get_slide_collision_count()):
-		var collision = get_slide_collision(i)
-		print("he chocado con ", collision.get_collider().name)
+	# Animaciones (DESPUÉS del movimiento)
+	if not is_on_floor():
+		# En el aire → mantener salto
+		$AnimatedSprite2D.play("saltar")
+	else:
+		if direction > 0:
+			$AnimatedSprite2D.play("dere")
+		elif direction < 0:
+			$AnimatedSprite2D.play("izq")
+		else:
+			$AnimatedSprite2D.play("default")
 ```
 La parte clave del salto es esta:
 ```
