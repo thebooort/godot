@@ -35,8 +35,131 @@ Demo en Itch.io -> https://cmiugr.itch.io/quizz
   * Quizz_pelis instancia de un Panel UI de tipo QUIZZ 
   * Quizz_arte instancia de un Panel UI de tipo QUIZZ  
 
+### Codigo inicial
+```
+extends Control
 
-Actividades: 
+
+@export var pregunta = 1;
+
+var caratura = preload("res://assets/movie_barbie.jpg")
+var aciertos = 0
+var total_preguntas = 3 
+# solo se puede hacer una vez 
+var por_hacer = true    
+
+
+func cargar_preguntas() -> void:
+	if pregunta==1: 
+		$Panel/pregunta.text = "1. Quien es la protagonista de Barbie"
+		caratura = preload("res://assets/movie_barbie.jpg")
+		$Panel/imagen.texture_normal = caratura
+		$Panel/PanelR/bt_a.text = "Greta Gerwig"
+		$Panel/PanelR/bt_b.text = "Margot Robbie"
+		$Panel/PanelR/bt_c.text = "Margaret Qualley"
+		
+	if pregunta==2: 
+		$Panel/pregunta.text = "2. En que episodio de Star Wars muere Darth Vader "
+		caratura = preload("res://assets/movie_starwars.jpg")
+		$Panel/imagen.texture_normal = caratura
+		$Panel/PanelR/bt_a.text = "IV: Una nueva esperanza"
+		$Panel/PanelR/bt_b.text = "III: La venganza de los Sith"
+		$Panel/PanelR/bt_c.text = "VI: El retorno del Jedi"
+		
+	if pregunta==3: 
+		$Panel/pregunta.text = "3. Cuantos oscars gano esta pelicula en 1942? "
+		caratura = preload("res://assets/movie_casablanca.jpg")
+		$Panel/imagen.texture_normal = caratura
+		$Panel/PanelR/bt_a.text = "1"
+		$Panel/PanelR/bt_b.text = "3"
+		$Panel/PanelR/bt_c.text = "5"
+	
+
+
+
+# Cargamos la pregunta correcta 
+func _ready() -> void:
+	$PanelResultados.visible=false
+	$PanelResultados/bt_salir.visible = false
+	$PanelResultados/bt_resultado.visible = true
+	$Panel/ProgressBar.max_value = total_preguntas
+	$Panel/ProgressBar.value = pregunta
+	aciertos = 0
+	pregunta = 1
+	cargar_preguntas()
+	
+
+
+# Called every frame. 'delta' is the elapsed time since the previous frame.
+func _process(delta: float) -> void:
+	pass
+
+
+func _on_bt_a_pressed() -> void:
+	# pulsado botón a 
+	$PanelResultados.visible=true
+	if pregunta==1: 
+		$PanelResultados/Resultado.text = "falso"
+	if pregunta==2:
+		$PanelResultados/Resultado.text = "falso"
+	if pregunta==2:
+		$PanelResultados/Resultado.text = "falso"
+
+
+
+func _on_bt_b_pressed() -> void:
+	# pulsado botón a 
+	$PanelResultados.visible=true
+	if pregunta==1: 
+		$PanelResultados/Resultado.text = "Correcto!"
+		aciertos = aciertos +1
+	if pregunta==2:
+		$PanelResultados/Resultado.text = "Falso"
+	if pregunta==3:
+		$PanelResultados/Resultado.text = "Correcto"
+		aciertos = aciertos +1
+
+
+func _on_bt_c_pressed() -> void:
+	# pulsado botón a 
+	$PanelResultados.visible=true
+	if pregunta==1: 
+		$PanelResultados/Resultado.text = "falso"
+	if pregunta==2:
+		$PanelResultados/Resultado.text = "Correcto"
+		aciertos = aciertos +1
+	if pregunta==3:
+		$PanelResultados/Resultado.text = "falso"
+
+
+func _on_bt_resultado_pressed() -> void:
+	
+	if pregunta == total_preguntas: 
+		# final de los resultados 
+		$PanelResultados/Resultado.text = "total respuestas acertadas = " + str(aciertos)
+		$PanelResultados/bt_resultado.visible = false
+		$PanelResultados/bt_salir.visible = true
+		# falta conectar tb_salir con la siguiente escena
+		# o bien cerrar panel 
+		
+	else:
+		$PanelResultados.visible = false	
+		pregunta += 1
+		$Panel/ProgressBar.value = pregunta
+		cargar_preguntas()
+
+
+func _on_bt_salir_pressed() -> void:
+	# falta conectar tb_salir con la siguiente escena
+	# tambie puede cerrar panel 	
+	
+	_ready()	
+	por_hacer = false
+	visible = false
+```
+
+
+### Actividades: 
 
 * Crear una **panel de tipo UI** (Control) que se puede **mostrar/ocultar** de tipo Quizz y con **tema personalizado**, con la siguiente estructura de preguntas con: 
 	* nombre de pregunta 
