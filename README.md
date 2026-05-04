@@ -146,6 +146,10 @@ Quizz (tablero de preguntas)  y juego de colisionar para activar preguntas.
 * demo en Itch.io -> https://cmiugr.itch.io/quizz
   
 <br>
+
+* [Diseño de niveles, powerups y cronometro](niveles_con_timer)
+
+
 Drag & Drop: arrastrar y soltar con varias alternativas. 
 
 * [Drag&Drop](drag_and_drop)
