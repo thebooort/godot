@@ -60,21 +60,21 @@ Si queremos además animar al personaje. debemos poner en play su animación en 
 extends CharacterBody2D
 
 
-const speed = 300.0
+const speed = 50.0
 
 
 func get_input():
-	var input_direction = Input.get_vector("ui_left", "ui_right", "ui_up", "ui_down")
+	var input_direction = Input.get_vector("left", "right", "up", "down")
 	velocity = input_direction*speed
-	if Input.is_action_just_pressed("ui_right"):
-		$AnimatedSprite2D.play("move_dcha")
-	if Input.is_action_just_pressed("ui_left"):
-		$AnimatedSprite2D.play("move_izda")
-	if Input.is_action_just_pressed("ui_up"):
-		$AnimatedSprite2D.play("move_up")
-	if Input.is_action_just_pressed("ui_down"):
-		$AnimatedSprite2D.play("move_down")
-	if Input.is_action_just_released("soltar_tecla"):
+	if Input.is_action_just_pressed("right"):
+		$AnimatedSprite2D.play("right")
+	if Input.is_action_just_pressed("left"):
+		$AnimatedSprite2D.play("left")
+	if Input.is_action_just_pressed("up"):
+		$AnimatedSprite2D.play("up")
+	if Input.is_action_just_pressed("down"):
+		$AnimatedSprite2D.play("down")
+	if input_direction==Vector2.ZERO:
 		$AnimatedSprite2D.play("default")
 
 
@@ -87,7 +87,8 @@ func _physics_process(delta: float) -> void:
 		print("he chocado con ", colision.get_collider().name)
 	else:
 		print("")
-	# move_and_slide()
+	#move_and_slide()
+
 
 ```
 
@@ -98,3 +99,68 @@ Tenemos dos funciones dentro de ``_physics_process``:
 * ``move_and_slide()`` hace que se mueva el personaje con la aceleración indicada y colisiona (pero no hace nada más)  
 * ``move_and_collide()`` además es capaz de saber con qué objeto ha colisionado
 
+### 6 Salto
+
+Para saltar, ya no sería un movimiento tipo top-down como el que teníamos antes. Necesitamos un esquema de plataformas: gravedad constante, salto solo cuando esta el muñeco en el suelo, y movimiento horizontal aparte. Esencialmente CharacterBody2D aplicando gravedad a velocity.y, comprobar is_on_floor() y después llamar a move_and_slide().
+
+Primero, en Project Settings > Input Map, crea una acción llamada por ejemplo "jump" y asígnale una tecla como ESPACIO. Igual que antes las acciones de input se definen ahí y luego se leen con Input.is_action_just_pressed().
+
+El script quehabría que añadir es: 
+```
+
+func _physics_process(delta: float) -> void:
+	# Gravedad
+	if not is_on_floor():
+		velocity += get_gravity() * delta
+
+	# Dirección
+	var direction := Input.get_axis("ui_left", "ui_right")
+
+	# Salto
+	if Input.is_action_just_pressed("ui_accept") and is_on_floor():
+		velocity.y = JUMP_VELOCITY
+		$AnimatedSprite2D.play("saltar")
+
+	# Movimiento horizontal
+	if direction != 0:
+		velocity.x = direction * SPEED
+	else:
+		velocity.x = move_toward(velocity.x, 0, SPEED)
+
+	move_and_slide()
+
+	# Animaciones (DESPUÉS del movimiento)
+	if not is_on_floor():
+		# En el aire → mantener salto
+		$AnimatedSprite2D.play("saltar")
+	else:
+		if direction > 0:
+			$AnimatedSprite2D.play("dere")
+		elif direction < 0:
+			$AnimatedSprite2D.play("izq")
+		else:
+			$AnimatedSprite2D.play("default")
+```
+La parte clave del salto es esta:
+```
+if Input.is_action_just_pressed("jump") and is_on_floor():
+	velocity.y = JUMP_VELOCITY
+```
+Eso hace que:
+
+- el salto ocurra solo al pulsar la tecla una vez,
+- solo puedas saltar si estás tocando el suelo,
+- ,el valor negativo haga que suba, porque en 2D el eje Y positivo va hacia abajo.
+
+
+Si quieres mantener animaciones, puedes añadir una para salto:
+```
+if not is_on_floor():
+	$AnimatedSprite2D.play("jump")
+elif direction > 0:
+	$AnimatedSprite2D.play("right")
+elif direction < 0:
+	$AnimatedSprite2D.play("left")
+else:
+	$AnimatedSprite2D.play("default")
+```
