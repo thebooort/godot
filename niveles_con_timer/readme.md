@@ -368,3 +368,59 @@ objeto.apply_impulse(Vector2(direction * 5, 0))
 ```
 
 ---
+
+
+## Enemigos
+
+```python
+extends CharacterBody2D
+
+@export var speed: float = 120.0
+@export var gravity: float = 900.0
+
+var player: Node2D = null
+
+func _physics_process(delta):
+	# Gravedad
+	if not is_on_floor():
+		velocity.y += gravity * delta
+	else:
+		velocity.y = 0
+
+	# Movimiento horizontal hacia el jugador
+	if player == null:
+		velocity.x = 0
+	else:
+		var direction_x = sign(player.global_position.x - global_position.x)
+		velocity.x = direction_x * speed
+
+	move_and_slide()
+
+
+
+func _on_area_2d_body_entered(body):
+	if body.name == "player_g":
+		player = body
+
+
+func _on_area_2d_body_exited(body):
+	if body.name == "player_g":
+		player = null
+
+
+func _on_hitzone_body_entered(body: Node2D) -> void:
+	if body.name == "player_g":
+		var panel = get_tree().get_first_node_in_group("game_over")
+
+		if panel != null:
+			panel.visible = true
+			get_tree().paused = true
+		else:
+			print("No se encontró ningún nodo en el grupo game_over_panel.")
+
+
+
+```
+
+
+
