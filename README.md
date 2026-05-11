@@ -126,7 +126,8 @@ Cómo exportar:
 <br>
 
 
-## Sesión 9: MiniJuegos  
+## Sesión final: MiniJuegos  
+Lista de diferentes minijuegos desarrollados en clase para que sean la base de los minijuegos que vosotros creéis.
 
 Quizz (tablero de preguntas)  y juego de colisionar para activar preguntas.
 * [Quizz](quizz)
@@ -137,7 +138,7 @@ Quizz (tablero de preguntas)  y juego de colisionar para activar preguntas.
 * [Diseño de niveles, powerups y cronometro](niveles_con_timer)
 
 
-*[Sidescroller](side_scroller) El dinosaurio de google, vaya
+* [Sidescroller](side_scroller) El dinosaurio de google, vaya
 
 
 Drag & Drop: arrastrar y soltar con varias alternativas. 
