@@ -126,7 +126,7 @@ Cómo exportar:
 <br>
 
 
-## Sesión 9: Juegos  
+## Sesión 9: MiniJuegos  
 
 Quizz (tablero de preguntas)  y juego de colisionar para activar preguntas.
 * [Quizz](quizz)
@@ -135,6 +135,9 @@ Quizz (tablero de preguntas)  y juego de colisionar para activar preguntas.
 <br>
 
 * [Diseño de niveles, powerups y cronometro](niveles_con_timer)
+
+
+*[Sidescroller](side_scroller) El dinosaurio de google, vaya
 
 
 Drag & Drop: arrastrar y soltar con varias alternativas. 
