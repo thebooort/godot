@@ -53,53 +53,28 @@ extends Node2D
 @export var obstacle_scene: PackedScene
 @export var min_spawn_time := 1.0
 @export var max_spawn_time := 2.5
-
-var score := 0.0
-var game_over := false
-
+var score = 0
 
 func _ready():
 	randomize()
-
-	$Panel.visible = false
-	$Panel.process_mode = Node.PROCESS_MODE_ALWAYS
-	$ScoreLabel.text = "Score: 0"
-
 	$Timer.timeout.connect(_on_spawn_timer_timeout)
 	_start_timer()
 
 
 func _start_timer():
-	if game_over:
-		return
-
 	$Timer.wait_time = randf_range(min_spawn_time, max_spawn_time)
 	$Timer.start()
 
 
 func _on_spawn_timer_timeout():
-	if game_over:
-		return
-
 	var obstacle = obstacle_scene.instantiate()
 	add_child(obstacle)
 	obstacle.global_position = $Marker2D.global_position
-
 	_start_timer()
-
-
+	
 func _process(delta):
-	if game_over:
-		return
-
 	score += delta * 10
 	$ScoreLabel.text = "Score: " + str(int(score))
-
-
-func show_game_over():
-	game_over = true
-	$Panel.visible = true
-	get_tree().paused = true
 
 ```
 
@@ -146,18 +121,8 @@ Aquí se crea una copia del obstáculo y se coloca en la posición del Marker2D.
 Esta parte actualiza el score:
 ```
 func _process(delta):
-	if game_over:
-		return
-
 	score += delta * 10
 	$ScoreLabel.text = "Score: " + str(int(score))
-```
-Y esta función activa el Game Over:
-```
-func show_game_over():
-	game_over = true
-	$Panel.visible = true
-	get_tree().paused = true
 ```
 
 ## 3. Script del player
