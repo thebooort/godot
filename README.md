@@ -141,6 +141,9 @@ Quizz (tablero de preguntas)  y juego de colisionar para activar preguntas.
 * [Sidescroller](side_scroller) El dinosaurio de google, vaya
 
 
+* [Movimiento a saltos](jump_game) - movimiento a saltos con animación de personaje y colisiones
+
+
 Drag & Drop: arrastrar y soltar con varias alternativas. 
 
 * [Drag&Drop](drag_and_drop)
