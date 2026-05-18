@@ -143,10 +143,10 @@ Quizz (tablero de preguntas)  y juego de colisionar para activar preguntas.
 
 * [Movimiento a saltos](jump_game) - movimiento a saltos con animación de personaje y colisiones
 
+* [Juego de peleas](peleas) - juego de peleas con animación de personajes, colisiones y sistema de salud
 
-Drag & Drop: arrastrar y soltar con varias alternativas. 
 
-* [Drag&Drop](drag_and_drop)
+* [Drag&Drop](drag_and_drop) Drag & Drop: arrastrar y soltar con varias alternativas. 
 
 <br>
 Sonido de fondo global (que se mantiene entre escenas) 

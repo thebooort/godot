@@ -1,0 +1,186 @@
+
+
+## Protagonista
+
+```
+extends CharacterBody2D
+
+const SPEED = 300.0
+const JUMP_VELOCITY = -700.0
+
+var attacking: bool = false
+
+
+func _ready() -> void:
+	$hitbox/CollisionShape2D.disabled = true
+	$AnimatedSprite2D.play("default")
+	
+
+func _physics_process(delta: float) -> void:
+	# Gravedad
+	if not is_on_floor():
+		velocity += get_gravity() * delta
+
+	# Si estaba saltando y toca el suelo, vuelve a default
+	if is_on_floor() and $AnimatedSprite2D.animation == "salto":
+		$AnimatedSprite2D.play("default")
+
+	# Si está atacando, no dejamos que haga otras acciones
+	if attacking:
+		move_and_slide()
+		return
+
+	# Salto
+	if Input.is_action_just_pressed("ui_accept") and is_on_floor():
+		$AnimatedSprite2D.play("salto")
+		velocity.y = JUMP_VELOCITY
+
+	# Ataque
+	if Input.is_action_just_pressed("atacar") and is_on_floor():
+		attacking = true
+		velocity.x = 0
+
+		$hitbox/CollisionShape2D.disabled = false
+		$AnimatedSprite2D.play("ataque")
+
+		await $AnimatedSprite2D.animation_finished
+
+		$hitbox/CollisionShape2D.disabled = true
+		attacking = false
+		$AnimatedSprite2D.play("default")
+
+		move_and_slide()
+		return
+
+	# Movimiento izquierda/derecha
+	var direction: float = Input.get_axis("ui_left", "ui_right")
+
+	if direction:
+		velocity.x = direction * SPEED
+
+		# Girar hacia la izquierda
+		if direction < 0:
+			$AnimatedSprite2D.flip_h = true
+			$hitbox.scale.x = -1
+
+			if has_node("hurtbox"):
+				$hurtbox.scale.x = -1
+
+		# Girar hacia la derecha
+		elif direction > 0:
+			$AnimatedSprite2D.flip_h = false
+			$hitbox.scale.x = 1
+
+			if has_node("hurtbox"):
+				$hurtbox.scale.x = 1
+
+	else:
+		velocity.x = move_toward(velocity.x, 0, SPEED)
+
+	move_and_slide()
+```
+
+## Enemigo
+
+```
+extends CharacterBody2D
+
+const SPEED = 100.0
+const ATTACK_DISTANCE = 50.0
+const GRAVITY_MULTIPLIER = 1.0
+
+@export var player: Node2D
+
+var attacking := false
+var taking_damage := false
+
+
+func _ready() -> void:
+	print("ENEMIGO READY: ", name)
+
+	$hitzone/CollisionShape2D.disabled = true
+	$AnimatedSprite2D.play("default")
+
+
+func _physics_process(delta: float) -> void:
+	if not is_on_floor():
+		velocity += get_gravity() * delta * GRAVITY_MULTIPLIER
+
+	if player == null:
+		move_and_slide()
+		return
+
+	if attacking or taking_damage:
+		velocity.x = 0
+		move_and_slide()
+		return
+
+	var distance_x: float = absf(player.global_position.x - global_position.x)
+
+	if distance_x > ATTACK_DISTANCE:
+		move_towards_player()
+	else:
+		velocity.x = 0
+		$AnimatedSprite2D.play("default")
+
+	move_and_slide()
+
+
+func move_towards_player() -> void:
+	var direction: float = sign(player.global_position.x - global_position.x)
+
+	velocity.x = direction * SPEED
+
+	if is_on_floor():
+		$AnimatedSprite2D.play("walk")
+
+	if direction < 0:
+		$AnimatedSprite2D.flip_h = true
+		$hitzone.scale.x = -1
+		$atack_zone.scale.x = -1
+	elif direction > 0:
+		$AnimatedSprite2D.flip_h = false
+		$hitzone.scale.x = 1
+		$atack_zone.scale.x = 1
+
+
+func _on_atack_zone_body_entered(body: Node2D) -> void:
+	if body.is_in_group("player") and not attacking and not taking_damage:
+		attacking = true
+		velocity.x = 0
+
+		$hitzone/CollisionShape2D.set_deferred("disabled", false)
+		$AnimatedSprite2D.play("attack")
+
+		print("anim actual: ", $AnimatedSprite2D.animation)
+
+		await $AnimatedSprite2D.animation_finished
+
+		$hitzone/CollisionShape2D.set_deferred("disabled", true)
+		$AnimatedSprite2D.play("default")
+
+		await get_tree().create_timer(0.6).timeout
+
+		attacking = false
+
+
+func _on_hitbox_area_entered(area: Area2D) -> void:
+	if area.is_in_group("player_hurtbox"):
+		print("daño enemigo")
+		vidas.vida_heroe = vidas.vida_heroe - 20
+
+
+func _on_hurtbox_area_entered(area: Area2D) -> void:
+	if area.is_in_group("player_hitbox") and not taking_damage:
+		taking_damage = true
+		attacking = false
+		$hitzone/CollisionShape2D.set_deferred("disabled", true)
+
+		$AnimatedSprite2D.play("damage")
+		await $AnimatedSprite2D.animation_finished
+
+		print("daño del heroe")
+
+		$AnimatedSprite2D.play("default")
+		taking_damage = false
+```
