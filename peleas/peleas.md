@@ -1,6 +1,10 @@
 
+# Codigo para peleas, con animaciones, ataque y daño.
 
 ## Protagonista 
+### Esquema de nodos
+
+![esuqema de nodos](image.png)
 
 ### derehca a izquierda y ciclo de animaciones
 
@@ -61,82 +65,89 @@ func _physics_process(delta: float) -> void:
 ```
 extends CharacterBody2D
 
-const SPEED = 300.0
-const JUMP_VELOCITY = -700.0
+const SPEED = 100.0
+const ATTACK_COOLDOWN = 0.6
+const DAMAGE = 20
 
-var attacking: bool = false
+@export var player: Node2D
+
+var atacando_1 := false
 
 
 func _ready() -> void:
-	$hitbox/CollisionShape2D.disabled = true
 	$AnimatedSprite2D.play("default")
-	
+
 
 func _physics_process(delta: float) -> void:
-	# Gravedad
 	if not is_on_floor():
 		velocity += get_gravity() * delta
 
-	# Si estaba saltando y toca el suelo, vuelve a default
-	if is_on_floor() and $AnimatedSprite2D.animation == "salto":
-		$AnimatedSprite2D.play("default")
-
-	# Si está atacando, no dejamos que haga otras acciones
-	if attacking:
-		move_and_slide()
-		return
-
-	# Salto
-	if Input.is_action_just_pressed("ui_accept") and is_on_floor():
-		$AnimatedSprite2D.play("salto")
-		velocity.y = JUMP_VELOCITY
-
-	# Ataque
-	if Input.is_action_just_pressed("atacar") and is_on_floor():
-		attacking = true
+	if player == null:
 		velocity.x = 0
-
-		$hitbox/CollisionShape2D.disabled = false
-		$AnimatedSprite2D.play("ataque")
-
-		await $AnimatedSprite2D.animation_finished
-
-		$hitbox/CollisionShape2D.disabled = true
-		attacking = false
-		$AnimatedSprite2D.play("default")
-
 		move_and_slide()
 		return
 
-	# Movimiento izquierda/derecha
-	var direction: float = Input.get_axis("ui_left", "ui_right")
+	if atacando_1:
+		velocity.x = 0
+		move_and_slide()
+		return
 
-	if direction:
-		velocity.x = direction * SPEED
-
-		# Girar hacia la izquierda
-		if direction < 0:
-			$AnimatedSprite2D.flip_h = true
-			$hitbox.scale.x = -1
-
-			if has_node("hurtbox"):
-				$hurtbox.scale.x = -1
-
-		# Girar hacia la derecha
-		elif direction > 0:
-			$AnimatedSprite2D.flip_h = false
-			$hitbox.scale.x = 1
-
-			if has_node("hurtbox"):
-				$hurtbox.scale.x = 1
-
-	else:
-		velocity.x = move_toward(velocity.x, 0, SPEED)
-
+	move_towards_player()
 	move_and_slide()
+
+func move_towards_player() -> void:
+	var direction: float = sign(player.global_position.x - global_position.x)
+
+	velocity.x = direction * SPEED
+
+	if is_on_floor() and not atacando_1:
+		$AnimatedSprite2D.play("default")
+	
+	
+	if direction < 0:
+		look_left()
+	elif direction > 0:
+		look_right()
+
+func look_left() -> void:
+	$AnimatedSprite2D.flip_h = true
+	$"zona_daño".scale.x = -1
+	$"zona_ataque".scale.x = -1
+
+
+func look_right() -> void:
+	$AnimatedSprite2D.flip_h = false
+	$zona_daño.scale.x = 1
+	$zona_ataque.scale.x = 1
+
+
+func _on_zona_ataque_2_body_entered(body: Node2D) -> void:
+	if body.name == "heroe_2":
+		atacando_1 = true
+		$AnimatedSprite2D.play("ataque")
+		await $AnimatedSprite2D.animation_finished
+		atacando_1 = false
+
+
+func _on_zona_ataque_body_entered(body: Node2D) -> void:
+	print(body.name)
+	if body.name == "heroe_2":
+		vidas.vida_heroe = vidas.vida_heroe -10
+
+
+func _on_zona_ataque_area_entered(area: Area2D) -> void:
+	if area.is_in_group("guerrero") and atacando_1:
+		print("ataque exitoso")
+		await $AnimatedSprite2D.animation_finished
+		vidas.vida_heroe = vidas.vida_heroe - 10 
 ```
 
 ## Enemigo
+
+
+![nodos enemigo](image-1.png)
+
+Notese que zona de daño pertenece a un grupo global creado para ello. 
 
 Creacion por partes del enemigo, con movimiento hacia el jugador, animaciones y ataque.
 
@@ -240,7 +251,7 @@ func _on_hitzone_area_entered(area: Area2D) -> void:
 		vidas.vida_heroe -= DAMAGE
 ```
 
-
+### codigo final completo
 
 
 ```
@@ -252,11 +263,10 @@ const DAMAGE = 20
 
 @export var player: Node2D
 
-var attacking := false
+var atacando_1 := false
 
 
 func _ready() -> void:
-	$hitzone/CollisionShape2D.disabled = true
 	$AnimatedSprite2D.play("default")
 
 
@@ -269,7 +279,7 @@ func _physics_process(delta: float) -> void:
 		move_and_slide()
 		return
 
-	if attacking:
+	if atacando_1:
 		velocity.x = 0
 		move_and_slide()
 		return
@@ -277,60 +287,82 @@ func _physics_process(delta: float) -> void:
 	move_towards_player()
 	move_and_slide()
 
-
 func move_towards_player() -> void:
-	var direction := sign(player.global_position.x - global_position.x)
+	var direction: float = sign(player.global_position.x - global_position.x)
 
 	velocity.x = direction * SPEED
 
-	if is_on_floor():
-		$AnimatedSprite2D.play("walk")
-
+	if is_on_floor() and not atacando_1:
+		$AnimatedSprite2D.play("default")
+	
+	
 	if direction < 0:
 		look_left()
 	elif direction > 0:
 		look_right()
 
-
 func look_left() -> void:
 	$AnimatedSprite2D.flip_h = true
-	$hitzone.scale.x = -1
-	$attack_zone.scale.x = -1
+	$"zona_daño".scale.x = -1
+	$"zona_ataque".scale.x = -1
 
 
 func look_right() -> void:
 	$AnimatedSprite2D.flip_h = false
-	$hitzone.scale.x = 1
-	$attack_zone.scale.x = 1
+	$zona_daño.scale.x = 1
+	$zona_ataque.scale.x = 1
 
 
-func _on_attack_zone_body_entered(body: Node2D) -> void:
-	if body.is_in_group("player"):
-		start_attack()
+func _on_zona_lanzar_ataque_body_entered(body: Node2D) -> void:
+	if body.name == "heroe_2":
+		atacando_1 = true
+		$AnimatedSprite2D.play("ataque")
+		await $AnimatedSprite2D.animation_finished
+		atacando_1 = false
 
 
-func start_attack() -> void:
-	if attacking:
-		return
-
-	attacking = true
-	velocity.x = 0
-
-	$hitzone/CollisionShape2D.set_deferred("disabled", false)
-	$AnimatedSprite2D.play("attack")
-
-	await $AnimatedSprite2D.animation_finished
-
-	$hitzone/CollisionShape2D.set_deferred("disabled", true)
-	$AnimatedSprite2D.play("default")
-
-	await get_tree().create_timer(ATTACK_COOLDOWN).timeout
-
-	attacking = false
+func _on_zona_ataque_body_entered(body: Node2D) -> void:
+	print(body.name)
+	if body.name == "heroe_2":
+		vidas.vida_heroe = vidas.vida_heroe -10
 
 
-func _on_hitzone_area_entered(area: Area2D) -> void:
-	if area.is_in_group("player_hurtbox"):
-		print("El enemigo golpea al héroe")
-		vidas.vida_heroe -= DAMAGE
+func _on_zona_ataque_area_entered(area: Area2D) -> void:
+	if area.is_in_group("guerrero") and atacando_1:
+		print("ataque exitoso")
+		await $AnimatedSprite2D.animation_finished
+		vidas.vida_heroe = vidas.vida_heroe - 10 
+```
+
+
+## Escena de pelea
+
+![escena de pelea](image-2.png)
+
+
+```
+extends Node2D
+
+
+# Called when the node enters the scene tree for the first time.
+func _ready() -> void:
+	pass # Replace with function body.
+
+var villano_vivo = true
+# Called every frame. 'delta' is the elapsed time since the previous frame.
+func _process(delta: float) -> void:
+	$heroe_2/barra_salud_heroe.value = vidas.vida_heroe
+	if vidas.vida_villano>0 :
+		$villano_1/barra_salud_villano.value = vidas.vida_villano
+	if vidas.vida_villano <= 0 and villano_vivo:
+		villano_vivo = false
+		$villano_1.queue_free()
+
+
+func _on_area_2d_input_event(viewport: Node, event: InputEvent, shape_idx: int) -> void:
+	if event.is_action_pressed("click"):
+		vidas.vida_heroe = vidas.vida_heroe - 10
+		vidas.vida_villano = vidas.vida_villano -10
+
+
 ```
