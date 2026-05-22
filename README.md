@@ -85,6 +85,8 @@ Conceptos:
 
 * [Jukebox](jukebox)
 
+* [sonido global](sonido) Sonido de fondo global (que se mantiene entre escenas) 
+
 ### Animación con sprites e Interaccion:
 
 - Basico: animar un sprite 2d con inputs (teclado) para moverlo por la pantallan.
@@ -129,11 +131,9 @@ Cómo exportar:
 ## Sesión final: MiniJuegos  
 Lista de diferentes minijuegos desarrollados en clase para que sean la base de los minijuegos que vosotros creéis.
 
-Quizz (tablero de preguntas)  y juego de colisionar para activar preguntas.
-* [Quizz](quizz)
-* demo en Itch.io -> https://cmiugr.itch.io/quizz
+
+* [Quizz](quizz) Quizz (tablero de preguntas)  y juego de colisionar para activar preguntas.
   
-<br>
 
 * [Diseño de niveles, powerups y cronometro](niveles_con_timer)
 
@@ -149,42 +149,29 @@ Quizz (tablero de preguntas)  y juego de colisionar para activar preguntas.
 * [Drag&Drop](drag_and_drop) Drag & Drop: arrastrar y soltar con varias alternativas. 
 
 <br>
-Sonido de fondo global (que se mantiene entre escenas) 
 
-* [sonido global](sonido)
-
-<br>
-
-Crear numeros aleatorios
-
-* [random](random_fruit)
-* 
-
+* [sonido global](sonido) Sonido de fondo global (que se mantiene entre escenas) 
 
 <br>
+
+
+* [random](random_fruit) Crear numeros aleatorios
+  
+
+
 <br>
 
 
 
 
 
-## Sesión 10: Almacenar y recuperar datos en fichero JSON 
+## Almacenar y recuperar datos en fichero JSON 
 
 Cargar datos en ficheros JSON
 * [load_json](fileIO)
 
-<br>
-<br>
 
-## Sesión 11 Juegos II: Timer para recoger objetos con temporizador  
-
-
-<br>
-<br>
-<br>
-
-
-## Sesión 12: Publicar en Internet 
+## Publicar en Internet 
 
 Publicación en itch.io
 * [Itch.io](itchio)
@@ -211,7 +198,7 @@ Publicación en itch.io
 
 Facultad de Bellas Artes, Universidad de Granada 
 
-CCBYNCSA M. Gea 
+CCBYNCSA M. Gea & Bartolome Ortiz, 2025-2026
 
 
 

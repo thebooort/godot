@@ -2,7 +2,7 @@
 
 Video tutorial: https://www.youtube.com/watch?v=uhgswVkYp0o
 
-Descargar [Código ejemplo](dragdrop.zip)
+Descargar [Código ejemplo](clicker.zip)
 
 Ver en Itch.io -> https://cmiugr.itch.io/dragdrop
 
