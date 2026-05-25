@@ -118,11 +118,14 @@ En esta semana nos hemos dedicado a configurar el plugin de Sistema de Diálogo 
 <br>
 <br>
 
-## Sesión 7: Exportar  
+## Sesión 7: Exportar  y publicar en internet
 
 Cómo exportar: 
 
 * [exportación](https://github.com/mgea/godot/wiki/exportar)
+
+Publicación en itch.io
+* [Itch.io](itchio)
 
 <br>
 <br>
@@ -162,20 +165,10 @@ Lista de diferentes minijuegos desarrollados en clase para que sean la base de l
 <br>
 
 
-
-
-
 ## Almacenar y recuperar datos en fichero JSON 
 
 Cargar datos en ficheros JSON
 * [load_json](fileIO)
-
-
-## Publicar en Internet 
-
-Publicación en itch.io
-* [Itch.io](itchio)
-
 
 
 
